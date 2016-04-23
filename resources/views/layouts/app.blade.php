@@ -12,36 +12,34 @@
     <link href="{{asset('https://fonts.googleapis.com/css?family=Lato:100,300,400,700')}}" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{asset('css/semantic.css')}}" rel="stylesheet">
+    <link href="{{asset('semantic/semantic.css')}}" rel="stylesheet">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
 </head>
 <body id="app-layout">
 
-
-    <div class="ui secondary  menu">
+    <div class="ui large menu">
+    @if (Auth::guest())
       <a class="item" href="{{ url('/') }}">
-         Laravel
+         Bienvenido a EasyTest
       </a>
+    @else
       <a class="item" href="{{ url('/home') }}">
-        Home
+         <i class="user icon"></i> {{ Auth::user()->name }}
       </a>
-      <a class="item active">
-        Friends
-      </a>
-      <div class="right menu">
-        <div class="item">
+    @endif
+      <div class="right menu">       
             @if (Auth::guest())
-                <a class="ui item" href="{{ url('/login') }}">Login</a>
-                <a class="ui item" href="{{ url('/register') }}">Register</a>
+                <a class="item" href="{{ url('/login') }}"><i class="sign in icon"></i> Login</a>
+                <a class="item" href="{{ url('/register') }}"><i class="add user icon"></i> Register</a>
             @else
-                <a href="{{ url('/logout') }}" class="ui item">
-                  Logout {{ Auth::user()->name }}
+                <a href="{{ url('/logout') }}" class="item">
+                 <i class="sign out icon"></i> Cerrar Session 
                 </a>                
             @endif
+          
         </div>
-        
-      </div>
+      </div>      
     </div>
    
 
@@ -49,7 +47,13 @@
 
     <!-- JavaScripts -->
     <script src={{asset("https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js")}}></script>
-    <script src={{asset("js/semantic.js")}}></script>
+    <script src={{asset("semantic/semantic.js")}}></script>
+
+    <script type="text/javascript">
+        $(function(){
+            $('.ui.dropdown').dropdown();
+        });
+    </script>
 
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
