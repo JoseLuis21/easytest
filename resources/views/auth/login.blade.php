@@ -2,14 +2,7 @@
 
 @section('content')
 
-@if(!empty($errors))     
-   
-      <div class="header">
-        
-        
-      </div>  
-   
-@endif
+
 {!! Form::open(array('url' => '/login', 'method' => 'POST', 'class'=> '')) !!}
 <div class="ui one column center aligned grid">
   <div class="column six wide form-holder">

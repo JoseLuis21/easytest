@@ -19,14 +19,13 @@
 
     <style type="text/css">
      body {
-        background: url('images/background.jpg') fixed;
-        background-size: cover;
+        background: url('images/background.jpg');
         padding: 0;
         margin: 0;
       }
 
       .form-holder {
-        background: rgba(255,255,255,0.3);
+        background-color: rgba(52, 165, 135, .9);
         margin-top: 10%;
         border-radius: 3px;
         border-radius: 0.28571429rem;
@@ -37,7 +36,7 @@
         letter-spacing: 2px;
         text-transform: uppercase;
         color: #fff;
-        text-shadow: 0 0 30px #000;
+        text-shadow: 0 0 5px #000;
         margin: 15px auto 30px auto;
       }
 
@@ -50,11 +49,16 @@
       }
       .barra
       {
-        background: rgba(255,255,255,0.8) !important;
+       background-color: rgba(52, 165, 135, 1) !important;
         font-size: 30px;
         letter-spacing: 2px;
         text-transform: uppercase;
+        color: #FFF;
         margin: 15px auto 30px auto;
+      }
+      .text_bar > a
+      {
+        color: #FFF !important;
       }
 
   </style>
@@ -62,7 +66,7 @@
 </head>
 <body id="app-layout" background="images/background.jpg">
 
-    <div class="ui large menu barra">
+    <div class="ui large menu barra text_bar">
     @if (Auth::guest())
       <a class="item" href="{{ url('/') }}">
          Bienvenido a EasyTest
@@ -72,7 +76,7 @@
          <i class="user icon"></i> {{ Auth::user()->name }}
       </a>
     @endif
-        <div class="right menu">       
+        <div class="right menu text_bar">       
             @if (Auth::guest())
                 <a class="item" href="{{ url('/login') }}"><i class="sign in icon"></i> Login</a>
                 <a class="item" href="{{ url('/register') }}"><i class="add user icon"></i> Register</a>
