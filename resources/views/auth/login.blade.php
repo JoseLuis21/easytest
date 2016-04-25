@@ -1,66 +1,61 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i>Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+@if(!empty($errors))     
+   
+      <div class="header">
+        
+        
+      </div>  
+   
+@endif
+{!! Form::open(array('url' => '/login', 'method' => 'POST', 'class'=> '')) !!}
+<div class="ui one column center aligned grid">
+  <div class="column six wide form-holder">
+    <h2 class="center aligned header form-head">Ingresar</h2>
+    <div class="ui form">
+        @if ($errors->has('email'))           
+            <div class="ui message">
+              <i class="close icon"></i>
+              <div class="header">
+                {{ $errors->first('email') }}
+              </div>
             </div>
+        @endif
+      <div class="ui left icon fluid input login">
+        {!! Form::text('email', old('email'), array('placeholder'=> 'Email', 'class' => '')); !!}
+        <i class="mail icon"></i>        
+      </div>
+       @if ($errors->has('password'))
+            <div class="ui message">
+              <i class="close icon"></i>
+              <div class="header">
+                {{ $errors->first('password') }}
+              </div>
+            </div>
+        @endif
+      <div class="ui left icon fluid input login">
+        {!! Form::password('password', ['placeholder' => 'Paswoord']) !!}
+        <i class="privacy icon"></i>       
+      </div>
+      <div class="inline field">
+        <div class="ui checkbox">
+          {!! Form::checkbox('remember'); !!} 
+          <label>Recuerdame</label>
         </div>
+      </div>
+      <div class="inline field">
+         {!! Form::submit('Ingresar a EasyTest', ['class' => 'ui button primary']); !!}
+         {!! link_to('/password/reset', $title = 'Olvidaste tu contraseña?', $attributes = array('class' => 'ui button secondary'), $secure = null); !!}                 
+      </div>
     </div>
+  </div>
 </div>
+{!! Form::close() !!}
+
+
+
+
+
 @endsection

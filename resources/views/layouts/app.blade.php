@@ -13,12 +13,56 @@
 
     <!-- Styles -->
     <link href="{{asset('semantic/semantic.css')}}" rel="stylesheet">
+   
+
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-</head>
-<body id="app-layout">
+    <style type="text/css">
+     body {
+        background: url('images/background.jpg') fixed;
+        background-size: cover;
+        padding: 0;
+        margin: 0;
+      }
 
-    <div class="ui large menu">
+      .form-holder {
+        background: rgba(255,255,255,0.3);
+        margin-top: 10%;
+        border-radius: 3px;
+        border-radius: 0.28571429rem;
+      }
+
+      .form-head {
+        font-size: 30px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        text-shadow: 0 0 30px #000;
+        margin: 15px auto 30px auto;
+      }
+
+      .remember-me {
+        text-align: left;
+      }
+      .login
+      {
+        margin-bottom: .5em;
+      }
+      .barra
+      {
+        background: rgba(255,255,255,0.8) !important;
+        font-size: 30px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: 15px auto 30px auto;
+      }
+
+  </style>
+
+</head>
+<body id="app-layout" background="images/background.jpg">
+
+    <div class="ui large menu barra">
     @if (Auth::guest())
       <a class="item" href="{{ url('/') }}">
          Bienvenido a EasyTest
@@ -28,7 +72,7 @@
          <i class="user icon"></i> {{ Auth::user()->name }}
       </a>
     @endif
-      <div class="right menu">       
+        <div class="right menu">       
             @if (Auth::guest())
                 <a class="item" href="{{ url('/login') }}"><i class="sign in icon"></i> Login</a>
                 <a class="item" href="{{ url('/register') }}"><i class="add user icon"></i> Register</a>
@@ -36,22 +80,23 @@
                 <a href="{{ url('/logout') }}" class="item">
                  <i class="sign out icon"></i> Cerrar Session 
                 </a>                
-            @endif
-          
+            @endif          
         </div>
-      </div>      
-    </div>
+    </div>      
+    
    
 
     @yield('content')
 
     <!-- JavaScripts -->
     <script src={{asset("https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js")}}></script>
-    <script src={{asset("semantic/semantic.js")}}></script>
-
+    <script src={{asset("semantic/semantic.js")}}></script>   
     <script type="text/javascript">
         $(function(){
             $('.ui.dropdown').dropdown();
+            $('.message .close').on('click', function() {
+                $(this).closest('.message').transition('fade');
+            });
         });
     </script>
 
