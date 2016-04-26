@@ -2,46 +2,37 @@
 
 <!-- Main Content -->
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
-                        {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-envelope"></i>Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+{!! Form::open(array('url' => '/password/email', 'method' => 'POST', 'class'=> '')) !!}
+<div class="ui one column center aligned grid">
+  <div class="column six wide form-holder">
+    <h2 class="center aligned header form-head">Olvidaste tu Contraseña?</h2>    
+     @if (session('status'))
+        <div class="message ui">
+            {{ session('status') }}
         </div>
+    @endif
+    <div class="ui form">
+        @if ($errors->has('email'))           
+            <div class="ui message">
+              <i class="close icon"></i>
+              <div class="header">
+                {{ $errors->first('email') }}
+              </div>
+            </div>
+        @endif
+      <div class="ui left icon fluid input login">
+        {!! Form::text('email', old('email'), array('placeholder'=> 'Email', 'class' => '')); !!}
+        <i class="mail icon"></i>        
+      </div>       
+      <div class="inline field">
+         {!! Form::submit('Enviar Email', ['class' => 'ui button primary']); !!}                 
+      </div>
     </div>
+  </div>
 </div>
+{!! Form::close() !!}
+
+
 @endsection

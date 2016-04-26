@@ -13,58 +13,13 @@
 
     <!-- Styles -->
     <link href="{{asset('semantic/semantic.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
    
 
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-    <style type="text/css">
-     body {
-        background: url('images/background.jpg');
-        padding: 0;
-        margin: 0;
-      }
-
-      .form-holder {
-        background-color: rgba(52, 165, 135, .9);
-        margin-top: 10%;
-        border-radius: 3px;
-        border-radius: 0.28571429rem;
-      }
-
-      .form-head {
-        font-size: 30px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #fff;
-        text-shadow: 0 0 5px #000;
-        margin: 15px auto 30px auto;
-      }
-
-      .remember-me {
-        text-align: left;
-      }
-      .login
-      {
-        margin-bottom: .5em;
-      }
-      .barra
-      {
-       background-color: rgba(52, 165, 135, 1) !important;
-        font-size: 30px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #FFF;
-        margin: 15px auto 30px auto;
-      }
-      .text_bar > a
-      {
-        color: #FFF !important;
-      }
-
-  </style>
-
 </head>
-<body id="app-layout" background="images/background.jpg">
+<body id="app-layout">
 
     <div class="ui large menu barra text_bar">
     @if (Auth::guest())
@@ -78,8 +33,8 @@
     @endif
         <div class="right menu text_bar">       
             @if (Auth::guest())
-                <a class="item" href="{{ url('/login') }}"><i class="sign in icon"></i> Login</a>
-                <a class="item" href="{{ url('/register') }}"><i class="add user icon"></i> Register</a>
+                <a class="item" href="{{ url('/login') }}"><i class="sign in icon"></i> Ingresar</a>
+                <a class="item" href="{{ url('/register') }}"><i class="add user icon"></i> Registrarse</a>
             @else
                 <a href="{{ url('/logout') }}" class="item">
                  <i class="sign out icon"></i> Cerrar Session 

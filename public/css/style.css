@@ -1,0 +1,42 @@
+ body {
+        background: url('../images/background.jpg');
+        padding: 0;
+        margin: 0;
+      }
+
+      .form-holder {
+        background-color: rgba(52, 165, 135, .9);
+        margin-top: 10%;
+        border-radius: 3px;
+        border-radius: 0.28571429rem;
+      }
+
+      .form-head {
+        font-size: 30px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        text-shadow: 0 0 5px #000;
+        margin: 15px auto 30px auto;
+      }
+
+      .remember-me {
+        text-align: left;
+      }
+      .login
+      {
+        margin-bottom: .5em;
+      }
+      .barra
+      {
+       background-color: rgba(52, 165, 135, 1) !important;
+        font-size: 30px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #FFF;
+        margin: 15px auto 30px auto;
+      }
+      .text_bar > a
+      {
+        color: #FFF !important;
+      }
