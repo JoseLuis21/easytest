@@ -11,6 +11,16 @@
         border-radius: 0.28571429rem;
       }
 
+      .tarjet
+      {
+        background-color: rgba(52, 165, 135, .5);        
+        width: 60%;
+        margin: 0 auto !important;
+        margin-top: 9em !important;
+        border-radius: 3em;
+        
+      }
+
       .form-head {
         font-size: 30px;
         letter-spacing: 2px;
