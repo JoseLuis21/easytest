@@ -7,7 +7,7 @@
   <div class="column six wide form-holder">
     <h2 class="center aligned header form-head">Ingresar</h2>
     <div class="ui form">
-      <h1>Hola</h1>
+      <h1>JOse</h1>
         @if ($errors->has('email'))
             <div class="ui message">
               <i class="close icon"></i>
