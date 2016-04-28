@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-  
+
 {!! Form::open(array('url' => '/login', 'method' => 'POST', 'class'=> '')) !!}
 <div class="ui one column center aligned grid">
   <div class="column six wide form-holder">
     <h2 class="center aligned header form-head">Ingresar</h2>
     <div class="ui form">
+      <h1>Hola</h1>
         @if ($errors->has('email'))
             <div class="ui message">
               <i class="close icon"></i>
